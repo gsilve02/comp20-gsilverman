@@ -13,3 +13,6 @@ I did not collaborate with anyone on this assignment.
 Time for Completion:
 This assignment took me approximately 40 minutes to complete, including time
 to research how to implement the design I wanted.
+
+Sources:
+ralphy.gif -- Ming Chow, comp20: lab 4
