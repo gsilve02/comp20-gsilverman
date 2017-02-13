@@ -1,15 +1,16 @@
-
-
 /* whole ralphy.gif image is 500px X 560px 
  * each subimage of ralphy.gif is 250px x 187px */
+
+ .ralphy {
+ 	width: 250px;
+ 	height: 187px;
+ }
 
 
 /* if screen is >1400px, display the top left image */
 @media only screen 
 	and (min-width: 1401px) {
 		.ralphy{
-			width: 250px;
-			height: 187px;
 			background: url(ralphy.gif) 0px 0px;
 		}
 }
@@ -19,8 +20,6 @@
 	and (min-width: 1201px)
 	and (max-width: 1400px) {
 		.ralphy {
-			width: 250px;
-			height: 187px;
 			background: url(ralphy.gif) -250px 0px;
 		}
 }
@@ -30,8 +29,6 @@
 	and (min-width: 1001px)
 	and (max-width: 1200px) {
 		.ralphy {
-			width: 250px;
-			height: 187px;
 			background: url(ralphy.gif) 0px -187px;
 		}
 }
@@ -41,8 +38,6 @@
 	and (min-width: 801px)
 	and (max-width: 1000px) {
 		.ralphy {
-			width: 250px;
-			height: 187px;
 			background: url(ralphy.gif) -250px -187px;
 		}
 }
@@ -52,8 +47,6 @@
 	and (min-width: 601px)
 	and (max-width: 800px) {
 		.ralphy {
-			width: 250px;
-			height: 187px;
 			background: url(ralphy.gif) 0px -374px;
 		}
 }
@@ -62,8 +55,6 @@
 @media only screen
 	and (max-width: 600px) {
 		.ralphy {
-			width: 250px;
-			height: 187px;
 			background: url(ralphy.gif) -250px -374px;
 		}
 }
