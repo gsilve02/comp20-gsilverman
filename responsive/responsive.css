@@ -1,0 +1,17 @@
+
+
+/* whole ralphy.gif image is 500px X 560px 
+ * each subimage of ralphy.gif is 250px x 187px */
+
+
+/* if screen is >1400px, display the top left image */
+
+/* if screen is <=1400px and >1200px, display top right image */
+
+/* if screen is <=1200px and >1000px, display the middle left image */
+
+/* if screen is <=1000px and >800px, display the middle right image */
+
+/* if screen is <=800px and >600px, display the bottom left image */
+
+/* if screen is <=600px, display the bottom right image */
