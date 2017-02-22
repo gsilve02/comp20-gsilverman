@@ -1,0 +1,9 @@
+#title {
+	text-align: center;
+}
+
+#failvideo {
+	/* centering technique found on StackOverflow */
+	display: block;
+	margin: 0 auto;
+}
