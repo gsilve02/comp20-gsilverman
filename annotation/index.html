@@ -18,23 +18,23 @@
 	var musicVideo = document.getElementById("failvideo");
 	var lyrics = document.getElementById("lyrics");
 
-	// call event listener to call change lyrics function
-	musicVideo.addEventListener(ontimeupdate, printLyrics() {
-		
+	function printLyrics() {
 		if (musicVideo.currentTime > 8 && musicVideo.currentTime < 12) {
-			lyrics.innerHTML = "You've got me feelin' emotions";
+			lyrics.innerHTML = "<p><h3>You've got me feelin' emotions</h3></p>";
 
 		} else if (musicVideo.currentTime > 12 && musicVideo.currentTime < 16) {
-			lyrics.innerHTML = "Deeper than I've ever dreamed of";
+			lyrics.innerHTML = "<p><h3>Deeper than I've ever dreamed of</h3></p>";
 
 		} else if (musicVideo.currentTime > 16 && musicVideo.currentTime < 21) {
-			lyrics.innerHTML = "You've got me feelin' emotions";
-			
+			lyrics.innerHTML = "<p><h3>You've got me feelin' emotions</h3></p>";
+
 		} else if (musicVideo.currentTime > 21 && musicVideo.currentTime < 25) {
-			lyrics.innerHTML = "Higher than the heavens above";
+			lyrics.innerHTML = "<p><h3>Higher than the heavens above</h3></p>";
 		}
-		
-		}, false);
+	}
+
+	// call event listener to call change lyrics function
+	musicVideo.addEventListener(ontimeupdate, printLyrics(), false);
 
 </script>
 </body>
