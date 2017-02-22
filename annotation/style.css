@@ -1,9 +1,15 @@
 #title {
 	text-align: center;
+	font-family: helvetica;
 }
 
 #failvideo {
 	/* centering technique found on StackOverflow */
 	display: block;
 	margin: 0 auto;
+}
+
+#lyrics {
+	font-family: helvetica;
+	text-align: center;
 }
