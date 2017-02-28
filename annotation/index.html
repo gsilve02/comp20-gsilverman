@@ -13,28 +13,30 @@
 <video src="https://www.cs.tufts.edu/comp/20/fail.mp4" id="failvideo" controls></video>
 <div id="lyrics"></div>
 
-<script>
+<script type="text/javascript">
+	
 	// define JavaScript variables
-	var musicVideo = document.getElementById("failvideo");
+	var failvideo = document.getElementById("failvideo");
 	var lyrics = document.getElementById("lyrics");
 
 	function printLyrics() {
-		if (musicVideo.currentTime > 8 && musicVideo.currentTime < 12) {
-			lyrics.innerHTML = "<p><h3>You've got me feelin' emotions</h3></p>";
+		if (failvideo.currentTime > 8 && failvideo.currentTime < 12) {
+			lyrics.innerHTML="<h2>You've got me feelin' emotions</h2>";
 
-		} else if (musicVideo.currentTime > 12 && musicVideo.currentTime < 16) {
-			lyrics.innerHTML = "<p><h3>Deeper than I've ever dreamed of</h3></p>";
+		} else if (failvideo.currentTime > 12 && failvideo.currentTime < 16) {
+			lyrics.innerHTML="<h2>Deeper than I've ever dreamed of</h2>";
 
-		} else if (musicVideo.currentTime > 16 && musicVideo.currentTime < 21) {
-			lyrics.innerHTML = "<p><h3>You've got me feelin' emotions</h3></p>";
+		} else if (failvideo.currentTime > 16 && failvideo.currentTime < 21) {
+			lyrics.innerHTML="<h2>You've got me feelin' emotions</h2>";
 
-		} else if (musicVideo.currentTime > 21 && musicVideo.currentTime < 25) {
-			lyrics.innerHTML = "<p><h3>Higher than the heavens above</h3></p>";
+		} else if (failvideo.currentTime > 21 && failvideo.currentTime < 25) {
+			lyrics.innerHTML="<h2>Higher than the heavens above</h2>";
+		
 		}
 	}
 
 	// call event listener to call change lyrics function
-	musicVideo.addEventListener(ontimeupdate, printLyrics(), false);
+	failvideo.addEventListener('timeupdate', printLyrics, false);
 
 </script>
 </body>
