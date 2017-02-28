@@ -1,4 +1,4 @@
-COMP 20 Lab: The Epic Fail
+:zap: COMP 20 Lab: The Epic Fail :zap:
 Genevieve Silverman (gsilve02)
 
 1. I believe that after much trial and error, everything in this
