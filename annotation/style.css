@@ -1,6 +1,8 @@
 #title {
 	text-align: center;
 	font-family: helvetica;
+	color: red;
+	font-size: 45px;
 }
 
 #failvideo {
@@ -12,4 +14,5 @@
 #lyrics {
 	font-family: helvetica;
 	text-align: center;
+
 }
