@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 
+  // TODO: calculate distance
+  // TODO: fix new marker info window from moving
+  // TODO: only let one window appear
+  // TODO: README
+
 <html>
 
 	<head>
@@ -11,7 +16,7 @@
 		<script>
       var username = "vJ8HkH3e";
       var url = "https://defense-in-derpth.herokuapp.com/submit";
-      var mode, otherMarkers;
+      var mode, otherMarkers, newMarker;
 			var myLat = 0;
 			var myLng = 0;
 			var request = new XMLHttpRequest();
@@ -102,25 +107,31 @@
               console.log(newVehicle);
               var newLoc = new google.maps.LatLng(newVehicle["lat"], newVehicle["lng"]);
               console.log("vehicle's location " + newLoc);
+              console.log("Vehicle's username: " + newVehicle["username"]);
+
+              // TODO: figure out how append distance to marker title
+              var newTitle = newVehicle["username"] + ": " + google.maps.geometry.spherical.computeDistanceBetween(myLoc, newLoc);
 
               if (mode == "vehicles") {
-                var newMarker = new google.maps.Marker({
+                newMarker = new google.maps.Marker({
                   position: newLoc,
                   icon: "img/drivers.png",
-                  title: newVehicle[username]
+                  title: newVehicle["username"]
                 });
 
               } else if (mode == "passengers") {
-                var newMarker = new google.maps.Marker({
+                newMarker = new google.maps.Marker({
                   position: newLoc,
                   icon: "img/vehicles.png",
-                  title: newVehicle[username]
+                  title: newTitle
                 });
               }
               newMarker.setMap(map);
-
+              google.maps.event.addListener(newMarker, 'click', function() {
+      					infowindow.setContent(newMarker.title);
+      					infowindow.open(map, newMarker);
+      				});
             }
-            // do something...
           }
         }
 
