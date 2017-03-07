@@ -3,18 +3,21 @@
 <html>
 
 	<head>
-		<title>Geolocation Map Example</title>
+		<title>notuber</title>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 		<link rel="stylesheet" href="index_style.css" />
 
 		<script>
+      var username = "vJ8HkH3e";
+      var url = "https://defense-in-derpth.herokuapp.com/submit";
+      var mode;
 			var myLat = 0;
 			var myLng = 0;
 			var request = new XMLHttpRequest();
 			var myLoc = new google.maps.LatLng(myLat, myLng);
 			var myOptions = {
-						zoom: 15, // The larger the zoom number, the bigger the zoom
+						zoom: 15,
 						center: myLoc,
 						mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
@@ -41,12 +44,15 @@
 				if (navigator.geolocation) {
           console.log("geolocation works");
 					navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, geolocationOptions);
+          sendLocation();
 				}
 				else {
 					alert("Ahh it looks like your geolocation services aren't working");
 				}
 			}
 
+      // found the following two functions and how to use them with
+      // navigator.geolocation.geCurrentPosition on Modzilla Developer Tools
       function geolocationSuccess(position) {
         myLat = position.coords.latitude;
         console.log("myLat = " + myLat);
@@ -59,26 +65,54 @@
         alert("Sorry it looks like your geolocation doesn't work");
       }
 
+      function sendLocation() {
+        var param = "username=" + username + "&lat=" + myLat + "&lng=" + myLng;
+        request.open("POST", url, true);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        request.send(param);
+
+        request.onreadystatechange = function() {
+          if (request.readyState == 4 && request.status == 200) {
+            console.log(request.responseText);
+
+            // see what kind of user you are
+            if (request.responseText[2] == "v") {
+              mode = "passenger"
+            } else if (request.responseTet[2] == "p") {
+              mode = "driver"
+            } else {
+              alert("error in JSON data");
+            }
+
+            data = JSON.parse(request.responseText);
+            console.log(data);
+
+            for (i = 0; i < data.length; i++) {
+              
+            }
+            // do something...
+          }
+        }
+
+      }
+
 			function renderMap()
 			{
 				myLoc = new google.maps.LatLng(myLat, myLng);
 
-				// Update map and go there...
 				map.panTo(myLoc);
 
-				// Create a marker
 				marker = new google.maps.Marker({
 					position: myLoc,
-					title: "Here I Am!"
+					title: "You are here!"
 				});
 				marker.setMap(map);
 
-				// Open info window on click of marker
 				google.maps.event.addListener(marker, 'click', function() {
 					infowindow.setContent(marker.title);
 					infowindow.open(map, marker);
 				});
-			}
+			 }
 		</script>
 	</head>
 
