@@ -11,7 +11,7 @@
 		<script>
       var username = "vJ8HkH3e";
       var url = "https://defense-in-derpth.herokuapp.com/submit";
-      var mode;
+      var mode, otherMarkers;
 			var myLat = 0;
 			var myLng = 0;
 			var request = new XMLHttpRequest();
@@ -77,18 +77,48 @@
 
             // see what kind of user you are
             if (request.responseText[2] == "v") {
-              mode = "passenger"
+              mode = "vehicles"
             } else if (request.responseTet[2] == "p") {
-              mode = "driver"
+              mode = "passengers"
             } else {
               alert("error in JSON data");
             }
 
+            if (mode == "vehicles") {
+              otherMarkers = "img/drivers.png";
+            } else if (mode == "passengers") {
+              otherMarkers = "img/vehicles";
+            }
+
             data = JSON.parse(request.responseText);
+            data = data[mode];
+            console.log("parsed JSON below");
             console.log(data);
 
+            console.log("data length " + data.length);
+
             for (i = 0; i < data.length; i++) {
-              
+              var newVehicle = data[i];
+              console.log(newVehicle);
+              var newLoc = new google.maps.LatLng(newVehicle["lat"], newVehicle["lng"]);
+              console.log("vehicle's location " + newLoc);
+
+              if (mode == "vehicles") {
+                var newMarker = new google.maps.Marker({
+                  position: newLoc,
+                  icon: "img/drivers.png",
+                  title: newVehicle[username]
+                });
+
+              } else if (mode == "passengers") {
+                var newMarker = new google.maps.Marker({
+                  position: newLoc,
+                  icon: "img/vehicles.png",
+                  title: newVehicle[username]
+                });
+              }
+              newMarker.setMap(map);
+
             }
             // do something...
           }
@@ -104,7 +134,8 @@
 
 				marker = new google.maps.Marker({
 					position: myLoc,
-					title: "You are here!"
+          icon: "img/pushteen.png",
+          title: "You are here"
 				});
 				marker.setMap(map);
 
