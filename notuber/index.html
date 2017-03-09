@@ -114,13 +114,14 @@
               // TODO: figure out how append distance to marker title
               console.log(google.maps);
               var distance = google.maps.geometry.spherical.computeDistanceBetween(newLoc, myLoc) * 0.000621371;
+              distance = distance.toFixed(3);
               var newTitle = newVehicle["username"] + ": " + distance;
 
               if (mode == "vehicles") {
                 newMarker = new google.maps.Marker({
                   position: newLoc,
                   icon: "img/drivers.png",
-                  title: "<p>Username: " + newVehicle["username"] + "<br/>Distance: " + distance + "</p>"
+                  title: "<p>Username: " + newVehicle["username"] + "<br/>Distance: " + distance + " miles</p>"
                 });
 
               } else if (mode == "passengers") {
