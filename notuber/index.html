@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 
-  <!--TODO: calculate distance-->
-  <!-- TODO: fix new marker info window from moving -->
-  <!-- TODO: only let one window appear -->
   <!-- TODO: README -->
   <!-- TODO: delete console log output -->
 
@@ -40,17 +37,13 @@
 			function init()
 			{
 				map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-        console.log("init map");
 				getMyLocation();
-        console.log("init location");
 			}
 
 			function getMyLocation() {
-        console.log("entering getMyLocation()");
 				if (navigator.geolocation) {
-          console.log("geolocation works");
+          /* found this method of calling getCurrentPosition on Modzilla Dev Tools */
 					navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, geolocationOptions);
-          //sendLocation();
 				}
 				else {
 					alert("Ahh it looks like your geolocation services aren't working");
@@ -61,9 +54,7 @@
       // navigator.geolocation.geCurrentPosition on Modzilla Developer Tools
       function geolocationSuccess(position) {
         myLat = position.coords.latitude;
-        console.log("myLat = " + myLat);
         myLng = position.coords.longitude;
-        console.log("myLng = " + myLng);
         sendLocation();
         renderMap();
       }
@@ -80,7 +71,6 @@
 
         request.onreadystatechange = function() {
           if (request.readyState == 4 && request.status == 200) {
-            console.log(request.responseText);
 
             // see what kind of user you are
             if (request.responseText[2] == "v") {
@@ -99,20 +89,11 @@
 
             data = JSON.parse(request.responseText);
             data = data[mode];
-            console.log("parsed JSON below");
-            console.log(data);
-
-            console.log("data length " + data.length);
 
             for (i = 0; i < data.length; i++) {
               var newVehicle = data[i];
-              console.log(newVehicle);
               var newLoc = new google.maps.LatLng(newVehicle["lat"], newVehicle["lng"]);
-              console.log("vehicle's location " + newLoc);
-              console.log("Vehicle's username: " + newVehicle["username"]);
 
-              // TODO: figure out how append distance to marker title
-              console.log(google.maps);
               var distance = google.maps.geometry.spherical.computeDistanceBetween(newLoc, myLoc) * 0.000621371;
               distance = distance.toFixed(3);
               var newTitle = newVehicle["username"] + ": " + distance;
