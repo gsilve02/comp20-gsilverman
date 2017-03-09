@@ -5,7 +5,16 @@
   <title>Messages</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script>
-    // Complete this section...
+    // I found resources on how to use JQuery with JSON data on LearnCode.academy's YouTube
+    $(function (){
+      $.ajax({
+        type: 'GET',
+        url: "https://messagehub.herokuapp.com/messages.json",
+        success: function(messages) {
+          console.log(messages);
+        }
+      });
+    });
   </script>
 </head>
 
