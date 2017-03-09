@@ -11,7 +11,10 @@
         type: 'GET',
         url: "https://messagehub.herokuapp.com/messages.json",
         success: function(messages) {
-          console.log(messages);
+          $("#messages").empty();
+          $.each(messages, function (i, message) {
+            $("#messages").append("<p>" + message.content + " by " + message.username + "</p>");
+          })
         }
       });
     });
