@@ -118,7 +118,7 @@ function renderMap()
   marker = new google.maps.Marker({
     position: myLoc,
     icon: "img/pushteen.png",
-    title: "You are here"
+    title: "<p>Your username: " + username + "</p>"
   });
   marker.setMap(map);
 
