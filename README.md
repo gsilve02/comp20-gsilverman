@@ -1,6 +1,6 @@
 #COMP20 - Genevieve Silverman#
 
-This is my private repository for the COMP20: Web Programming class at Tufts.
+*This is my private repository for the COMP20: Web Programming class at Tufts.*
 
 * `annotation` contains files for a webpage that plays a video of Mariah
 Carey from New Years Eve 2017 and displays the lyrics to her song below the
