@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 
-  // TODO: calculate distance
-  // TODO: fix new marker info window from moving
-  // TODO: only let one window appear
-  // TODO: README
+  <!--TODO: calculate distance-->
+  <!-- TODO: fix new marker info window from moving -->
+  <!-- TODO: only let one window appear -->
+  <!-- TODO: README -->
+  <!-- TODO: delete console log output -->
 
 <html>
 
 	<head>
 		<title>notuber</title>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-		<link rel="stylesheet" href="index_style.css" />
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJeo9k_N-vJuKgJs8NJGo--Z64qSOXyaE&libraries=geometry"></script>
+    <link rel="stylesheet" href="index_style.css" />
 
 		<script>
       var username = "vJ8HkH3e";
@@ -49,7 +50,7 @@
 				if (navigator.geolocation) {
           console.log("geolocation works");
 					navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, geolocationOptions);
-          sendLocation();
+          //sendLocation();
 				}
 				else {
 					alert("Ahh it looks like your geolocation services aren't working");
@@ -63,7 +64,8 @@
         console.log("myLat = " + myLat);
         myLng = position.coords.longitude;
         console.log("myLng = " + myLng);
-        renderMap()
+        sendLocation();
+        renderMap();
       }
 
       function geolocationError() {
@@ -110,13 +112,15 @@
               console.log("Vehicle's username: " + newVehicle["username"]);
 
               // TODO: figure out how append distance to marker title
-              var newTitle = newVehicle["username"] + ": " + google.maps.geometry.spherical.computeDistanceBetween(myLoc, newLoc);
+              console.log(google.maps);
+              var distance = google.maps.geometry.spherical.computeDistanceBetween(newLoc, myLoc) * 0.000621371;
+              var newTitle = newVehicle["username"] + ": " + distance;
 
               if (mode == "vehicles") {
                 newMarker = new google.maps.Marker({
                   position: newLoc,
                   icon: "img/drivers.png",
-                  title: newVehicle["username"]
+                  title: "<p>Username: " + newVehicle["username"] + "<br/>Distance: " + distance + "</p>"
                 });
 
               } else if (mode == "passengers") {
@@ -128,8 +132,8 @@
               }
               newMarker.setMap(map);
               google.maps.event.addListener(newMarker, 'click', function() {
-      					infowindow.setContent(newMarker.title);
-      					infowindow.open(map, newMarker);
+      					infowindow.setContent(this.title);
+      					infowindow.open(map, this);
       				});
             }
           }
