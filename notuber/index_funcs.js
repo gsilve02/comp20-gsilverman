@@ -57,11 +57,11 @@ function sendLocation() {
 
   request.onreadystatechange = function() {
     if (request.readyState == 4 && request.status == 200) {
-
+      
       // see what kind of user you are
       if (request.responseText[2] == "v") {
         mode = "vehicles"
-      } else if (request.responseTet[2] == "p") {
+      } else if (request.responseText[2] == "p") {
         mode = "passengers"
       } else {
         alert("error in JSON data");
