@@ -9,6 +9,7 @@ will be displayed on the map, or a passenger, which means that the locations
 of other drivers will be displayed on the map. This application is able to
 complete this by using Google Map's API and AJAX methods.
 
+
 1. To the best of my knowledge, all parts of this assignment have been completed
 correctly.
 
@@ -20,6 +21,7 @@ to get the base code where you just load a map and your location to open on Goog
 Chrome. Once I got the base code to work, I was cruising and looking up how implement
 the Google Maps API online. A lot of this assignment was trial and error and using
 console.log statements to figure out how things worked.
+
 
 SOURCES:
 The base code I used for this assignment was Ming's geoocation_map.html file on
