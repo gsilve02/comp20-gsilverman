@@ -14,3 +14,7 @@ the JavaScript work.
 
 * `responsive` contains files for a webpage that uses a sprite and displays
 a different portion of the sprite based on the size of the webpage's window.
+
+* `messages` contains files for a webpage that receives JSON data from a server
+containing information about messages different users are sending. This JSON
+data gets parsed and displayed on the webpage.
