@@ -1,5 +1,5 @@
 var username = "vJ8HkH3e";
-var url = "http://enigmatic-beach-51061.heroku.com/submit";
+var url = "https://enigmatic-beach-51061.herokuapp.com/submit";
 var mode, otherMarkers, newMarker;
 var myLat = 0;
 var myLng = 0;
