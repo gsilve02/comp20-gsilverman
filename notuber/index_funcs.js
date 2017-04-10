@@ -1,5 +1,5 @@
 var username = "vJ8HkH3e";
-var url = "https://defense-in-derpth.herokuapp.com/submit";
+var url = "http://enigmatic-beach-51061.heroku.com/submit";
 var mode, otherMarkers, newMarker;
 var myLat = 0;
 var myLng = 0;
@@ -57,7 +57,7 @@ function sendLocation() {
 
   request.onreadystatechange = function() {
     if (request.readyState == 4 && request.status == 200) {
-      
+
       // see what kind of user you are
       if (request.responseText[2] == "v") {
         mode = "vehicles"
