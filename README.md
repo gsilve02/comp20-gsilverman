@@ -1,4 +1,4 @@
-#COMP20 - Genevieve Silverman#
+**COMP20 - Genevieve Silverman**
 
 1) This is a repository to hold all of the code I wrote for my COMP20 course 
 at Tufts. This repository allows my professor, Ming, to review my code.
