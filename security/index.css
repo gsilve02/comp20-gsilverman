@@ -1,3 +1,11 @@
 h2 {
         font-style: italic;
 }
+
+img {
+        width: 70%;
+}
+
+.description {
+        margin-left: 35px;
+}

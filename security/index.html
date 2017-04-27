@@ -13,12 +13,33 @@
         <h1>COMP20 Assignment 4</h1>
         <h2>by Genevieve Silverman</h2>
 
+
         <!-- body -->
         <h3>Introduction</h3>
         <p>This web application allows passengers and drivers to find drivers or passengers, respectively, in their area. If a passenger logs on, their location is saved in a mongoDB collection, and they can see the location of recently active drivers in their area that were also stored in a mongoDB collection. If a driver logs on, their location is saved in a database, and they can see the locations of recetly active passengers in their area. Because this application stores sensitive information about its clients, I have been hired to find security vulnerabilities with the application. Below I have documented some of the vulnerabilities I found and have suggested ways to remedy the vulnerabilities so that this app can be safer for its users.</p>
+
         <h3>Methodology</h3>
+        <p></p>
+
         <h3>Abstract Findings</h3>
+        <p></p>
+
         <h3>Issues Found</h3>
+        <ol>
+                <li>Issue 1: Cross-Site Scripting (XSS)
+                        <ul>
+                              <li>Location: <p class="description">vulnerability at https://polar-spire-83537.herokuapp.com/submit, effects at https://polar-spire-83537.herokuapp.com/</p></li>
+                              
+                              <li>Severity: <p class="description">High -- XSS is a high severity vulnerability because it allows hackers to completely manipulate your webpage into whatever they want through HTML, CSS, and JavaScript.</p></li>
+                              
+                              <li>Description: <p class="description">I found this vulnerability through the POST '/submit' method and the GET '/' method. The POST method allows one to add documents to the mongoDB without filtering the username content. The GET method then accesses the username content and puts it into HTML format so that it can be added to the webpage's file. This allows for usernames containing JavaScript to be executed when https://polar-spire-83537.herokuapp.com/ is loaded. I found this just by playing around with curl and the POST '/submit' method. </p></li>
+                              
+                              <li>Proof:<p class="description">inserting JavaScript into database</p> <img alt="proof of JavaScript being inserted into the database" src="img/curlXSS.png"/><p class="description">JavaScript that was stored in the database being executed</p><img src="img/XSS.png" alt="proof of JavaScript being executed from database" /></li>
+                              
+                              <li>Resolution: <p class="description">This vulnerability can be resolved by stripping the caret, semi-colon and slash characters out of the username before its stored in the database (line 97) or before the username is added to the HTML dom (line 39).</p><p class="description">Where the username is not groomed</p><img src="img/XSSLocationPost.png" alt="the code where the username is not groomed before being put in the database"/> <p class="description">Where the database information is put into the HTML DOM</p><img src="img/XSSLocationGet.png" alt="code showing how the username is put right into the HTML DOM from the database"/></li>  
+                        </ul>
+                </li>   
+        </ol>
         <h3>Conclusion</h3>
         <h3>References</h3>
 
