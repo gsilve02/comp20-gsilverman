@@ -30,10 +30,23 @@
         can be safer for its users.</p>
 
         <h3>Methodology</h3>
-        <p class="description"></p>
+        <p class="description">The first strategy that I used for this 
+        assignment was to play around with the application to see if I could 
+        come up with hacks on my own. Once I did that for a while, I decided
+        to go and look at my partner's code to see if I could identify 
+        more vulnerabilities.</p>
 
         <h3>Abstract Findings</h3>
-        <p class="description"></p>
+        <p class="description">The first issue I found was that when a user
+        submits data, that data is never sanitized. By not sanitizing the data,
+        hackers can submit data that tells the web browser to do sneaky 
+        things that will ruin the functionality of the application. The
+        second issue I found was that the data that was submitted was never
+        validated thoroughly enough. This allows unusable data to go into the
+        database and clog it up. The last issue I found was that in public
+        code, all of the drivers' usernames are listed out. This is bad 
+        because it compromises the privacy of drivers and allows others to 
+        assume their identity.</p>
 
         <h3>Issues Found</h3>
         <ol>
@@ -189,10 +202,33 @@
                         </ul>
                 </li>
         </ol>
+
         <h3>Conclusion</h3>
-        <p class="description"></p>
+        <p class="description">I didn't realize how difficult it would be to
+        hack a simple application. I was just assuming that we would be able
+        to hack these applications to the moon and back; however, that was
+        seemingly not the case. Most of the vulnerabilities with this web
+        applicaiton stem back to the idea that one should never trust user 
+        input. Input should be sanitized before it ever gets put into the HTML
+        DOM or a database. Before this app moves forward, all user input
+        should really be sanitized before being used. Additionally, I woul add
+        extra layers of security checks such as requiring passwords with 
+        usernames. When an app collects confidential information from its users,
+        the developer should really invest in protecting the privacy of the
+        users. I would suggest investing a lot of money making this app secure
+        now before you move on. </p>
+        
         <h3>References</h3>
-        <p class="description"></p>
+        <p class="description">
+                <ul>
+                <li>I used this website:
+                https://docs.mongodb.com/manual/reference/operator/query-comparison/
+                to look for ways in which I could create a mongodb injection
+                hack, but I was unable to :( hopefully I can use it in the 
+                future!
+                </li>
+                </ul>
+        </p>
         
 </body>
 
