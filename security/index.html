@@ -220,6 +220,20 @@
         the developer should really invest in protecting the privacy of the
         users. I would suggest investing a lot of money making this app secure
         now before you move on. </p>
+
+        <h3>Side Notes</h3>
+        <p class="description">In trying to hack my partner's application, I
+        realized little unconscious security vulnerabilities that I had in 
+        my application. For instance, I tried really hard to perform a mongodb
+        injection on my partner's application, but I couldn't. I think this
+        was because he took in the username parameter for the GET 
+        '/vehicles.json' and then only searched for one instance of that
+        username, making it so that the application could not return multiple
+        documents from the database at once. I did not take this step in my 
+        application; instead, I just looked for all occurences of a username 
+        (as I expected there to only be one of each username because I updated
+        old entried with the same username). However, this caused my application
+        to better allow a hacker to perform mongodb injection on me. </p>
         
         <h3>References</h3>
         <p class="description">
