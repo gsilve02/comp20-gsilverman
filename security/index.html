@@ -34,11 +34,24 @@
                               
                               <li>Description: <p class="description">I found this vulnerability through the POST '/submit' method and the GET '/' method. The POST method allows one to add documents to the mongoDB without filtering the username content. The GET method then accesses the username content and puts it into HTML format so that it can be added to the webpage's file. This allows for usernames containing JavaScript to be executed when https://polar-spire-83537.herokuapp.com/ is loaded. I found this just by playing around with curl and the POST '/submit' method. </p></li>
                               
-                              <li>Proof:<p class="description">inserting JavaScript into database</p> <img alt="proof of JavaScript being inserted into the database" src="img/curlXSS.png"/><p class="description">JavaScript that was stored in the database being executed</p><img src="img/XSS.png" alt="proof of JavaScript being executed from database" /></li>
+                              <li>Proof:<p class="description">Inserting JavaScript into database:</p> <img alt="proof of JavaScript being inserted into the database" src="img/curlXSS.png"/><p class="description">JavaScript that was stored in the database being executed:</p><img src="img/XSS.png" alt="proof of JavaScript being executed from database" /></li>
                               
-                              <li>Resolution: <p class="description">This vulnerability can be resolved by stripping the caret, semi-colon and slash characters out of the username before its stored in the database (line 97) or before the username is added to the HTML dom (line 39).</p><p class="description">Where the username is not groomed</p><img src="img/XSSLocationPost.png" alt="the code where the username is not groomed before being put in the database"/> <p class="description">Where the database information is put into the HTML DOM</p><img src="img/XSSLocationGet.png" alt="code showing how the username is put right into the HTML DOM from the database"/></li>  
+                              <li>Resolution: <p class="description">This vulnerability can be resolved by stripping the caret, semi-colon and slash characters out of the username before its stored in the database (line 97) or before the username is added to the HTML dom (line 39).</p><p class="description">Where the username is not groomed:</p><img src="img/XSSLocationPost.png" alt="the code where the username is not groomed before being put in the database"/> <p class="description">Where the database information is put into the HTML DOM:</p><img src="img/XSSLocationGet.png" alt="code showing how the username is put right into the HTML DOM from the database"/></li>  
                         </ul>
-                </li>   
+                </li> 
+                <li>Issue 2: Data Validation
+                        <ul>
+                                <li>Location: <p class="description">vulnerability at https://polar-spire-83537.herokuapp.com/submit</p></li>
+                                
+                                <li>Severity: <p class="description">low -- this probably won't cause the app to crash or for hackers to compromise others' data</p></li>
+
+                                <li>Description: <p class="description">I found this vulnerability through the POST '/submit'. When a POST request is sent, the lat and lng parameters are never checked for accuracy. They are converted to floats, but the server never actually checks that it was completely converted to a float after or that the lat and lng were in valid ranges. This fault allowed me to submit lat and lng values that were out of range and lat and lng values that weren't floats. In both cases the data still ended up in the database. This could be a problem in the future if the creator changes the maps from Google Maps to another source if that source does not validate lat and lng before rendering pin-points on the map. </p></li>
+                                
+                                <li>Proof: <p class="description">Creating a user with lat and lng values out of range:</p><img src="img/issue2Making.png" alt="submitting out of range lat and lng values" /> <p class="description">Out of range lat and lng values stored in the database:</p><img src="img/issue2Proof.png" alt="showing that out of range lat and lngs were stored in database" /> <p class="description">Creating a user with non-float lat and lng values: </p><img src="img/issue2Making2.png" alt="submitting non-float lat and lng values" /> <p class="description">Null values showing up in database:</p><img src="img/issue2Proof2.png" alt="showing null values in database"/></li>
+                                
+                                <li>Resolution: <p class="description">This can be easily remidied by adding a JavaScript function that takes in the lat and lng values before they're entered into the database and returning a boolean indicating if the lat and lng values are valid. This check should go after the lat and lng have been converted to floats. In this function, the lat and lng can be checked to see if they're both in range and if they're actually floats.</p></li>
+                        </ul>
+                </li>  
         </ol>
         <h3>Conclusion</h3>
         <h3>References</h3>
