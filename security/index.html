@@ -16,7 +16,7 @@
 
         <!-- body -->
         <h3>Introduction</h3>
-        <p>This web application allows passengers and drivers to find 
+        <p class="description">This web application allows passengers and drivers to find 
         drivers or passengers, respectively, in their area. If a passenger 
         logs on, their location is saved in a mongoDB collection, and they 
         can see the location of recently active drivers in their area that 
@@ -30,10 +30,10 @@
         can be safer for its users.</p>
 
         <h3>Methodology</h3>
-        <p></p>
+        <p class="description"></p>
 
         <h3>Abstract Findings</h3>
-        <p></p>
+        <p class="description"></p>
 
         <h3>Issues Found</h3>
         <ol>
@@ -95,7 +95,7 @@
                                 https://polar-spire-83537.herokuapp.com/submit
                                 </p></li>
                                 
-                                <li>Severity: <p class="description">low -- 
+                                <li>Severity: <p class="description">Low -- 
                                 this probably won't cause the app to crash 
                                 or for hackers to compromise others' data
                                 </p></li>
@@ -149,19 +149,50 @@
                                 if they're actually floats.</p></li>
                         </ul>
                 </li>  
-                <li>Issue 3:
+                <li>Issue 3: Privacy and Hard-Coding Data
                         <ul>
-                                <li>Location:</li>
-                                <li>Severity:</li>
-                                <li>Description:</li>
-                                <li>Proof:</li>
-                                <li>Resolution:</li>
+                                <li>Location: <p class="description">
+                                index.js</p></li>
+
+                                <li>Severity:<p class="description">
+                                Medium -- This privacy vulnerability is medium
+                                because it compromises every driver's 
+                                privacy. This may also allow people to assume
+                                the identity of the driver since they can 
+                                just take that username, set it as their own
+                                and act as a driver. This is a huge risk to
+                                potential passengers because they think they're
+                                getting a verified driver, but they're not.
+                                This raises the issue of verification. This 
+                                app has none. All you need is a username, no
+                                passwords.</p></li>
+
+                                <li>Description: <p class="description">
+                                I found this vulnerability while looking 
+                                through the index.js file. </p></li>
+
+                                <li>Proof: <p class="description"> The code
+                                where vehicle usernames are exposed: </p>
+                                <img src="img/vehicleUsernames.png" 
+                                alt="evidence that the usernames were hard-coded" />
+                                </li>
+                                
+                                <li>Resolution: <p class="description">
+                                This problem could be resolved best by 
+                                creating an additional database of vehicle
+                                usernames behind the scenes. This way only 
+                                authorized people can have access to driver's
+                                usernames. I would also suggest adding an
+                                additional verification step of passwords
+                                so that strangers can't just pose as drivers
+                                if they get the username of a driver.</li>
                         </ul>
                 </li>
         </ol>
         <h3>Conclusion</h3>
+        <p class="description"></p>
         <h3>References</h3>
-
+        <p class="description"></p>
         
 </body>
 
