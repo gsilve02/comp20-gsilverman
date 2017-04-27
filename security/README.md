@@ -1,6 +1,8 @@
-# TODO: README #
+# Assignment 4: Security
 *by Genevieve Silverman*
 
-1. Identify what aspects of the work have been correctly implemented and what have not.
-2. Identify anyone with whom you have collaborated or discussed the assignment.
-3. Say approximately how many hours you have spent completing the assignment.
+1. I have done as much hacking as I can!
+2. I talked to Will Edmonds and Dakota LeRoy about this assignment and that's
+where the idea of hard-coding user data (issue #3) came up. I did all of my
+analysis on this issue myself. 
+3. I spent roughly 4 hours on this assignment :grin:
